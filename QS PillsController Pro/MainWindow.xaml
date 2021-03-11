@@ -26,24 +26,21 @@
         <Label Grid.Column="0" Grid.Row="1" x:Name="NameTBox" Content="Type your medicine name:" HorizontalAlignment="Right" Cursor="Arrow" FontSize="20" MouseDown="NameTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
         <TextBox Text="{Binding PillName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="1" Grid.Column="1" x:Name="NameBox" HorizontalAlignment="Left" Height="33" VerticalAlignment="Stretch" FontSize="20" Width="400" Grid.ColumnSpan="2"/>
         <Label Grid.Column="0" Grid.Row="2" x:Name="FrequencyTBox" Content="Type frequency of consumption per day:" HorizontalAlignment="Right" VerticalAlignment= "Stretch" Width="376" Cursor="Arrow" FontSize="20" MouseDown="FrequencyTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
-        <ComboBox Text="{Binding Frequency, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="2" Grid.Column="1"  
-                  materialDesign:ComboBoxAssist.ShowSelectedItem="{Binding  IsChecked, ElementName=FrequencyBox}" x:Name="FrequencyBox" Height="37" FontSize="20">
+        <ComboBox Text="{Binding Frequency, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="2" Grid.Column="1"  x:Name="FrequencyBox" Height="37" FontSize="20">
             <ComboBoxItem
                     IsSelected="True" Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
-            <ComboBoxItem Content="4"/>
         </ComboBox>
-        <DatePicker Text="{Binding StartDateTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="1" Grid.Row="3" FontSize="20"
+        <DatePicker Text="{Binding StartDateTime}" Grid.Column="1" Grid.Row="3" FontSize="20"
                     x:Name="StartDatePicker"
                     materialDesign:HintAssist.Hint="Future Date"
-                    materialDesign:CalendarAssist.IsHeaderVisible="False" Height="37" >
-            <DatePicker.SelectedDate>
-                <Binding
-                    Path="FutureValidatingDate"
-                    UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </DatePicker.SelectedDate>
+                    materialDesign:CalendarAssist.IsHeaderVisible="False" 
+                    Height="37" >
+            <Binding.ValidationRules>
+                <domain:FutureDateValidationRule
+                    ValidatesOnTargetUpdated="True" xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />
+            </Binding.ValidationRules>
         </DatePicker>
         <Label Grid.Column="0" Grid.Row="3" x:Name="StartDatePickerTBox" Content="Choose start date of consumption:" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="37" FontFamily="Segoe UI Semibold" />
         <DatePicker Text="{Binding EndDateTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="4" Grid.Column="1"

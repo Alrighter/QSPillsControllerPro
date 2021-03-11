@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
+using ValidationResult = System.Windows.Controls.ValidationResult;
 
 namespace QS_PillsController_Pro
 {
@@ -127,10 +118,6 @@ namespace QS_PillsController_Pro
             {
                 MessageBox.Show("Введите корректные данные. " + _time1);
             }
-            
-
-            
-
 
         }
 
@@ -194,6 +181,16 @@ namespace QS_PillsController_Pro
 
 
 
+    }
+
+    public class NotEmptyValidationRule : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            return string.IsNullOrWhiteSpace((value ?? "").ToString())
+                ? new ValidationResult(false, "Field is required.")
+                : ValidationResult.ValidResult;
+        }
     }
 }
 
