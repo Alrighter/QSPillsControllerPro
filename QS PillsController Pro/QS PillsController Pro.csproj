@@ -132,6 +132,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="PCNotifier\PCNotifier.application" />
+    <None Include="PCNotifier\PCNotifier.exe.config" />
+    <None Include="PCNotifier\PCNotifier.exe.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +148,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\pills.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="PCNotifier\app.publish\PCNotifier.exe" />
+    <Content Include="PCNotifier\MaterialDesignColors.dll" />
+    <Content Include="PCNotifier\MaterialDesignColors.pdb" />
+    <Content Include="PCNotifier\MaterialDesignThemes.Wpf.dll" />
+    <Content Include="PCNotifier\MaterialDesignThemes.Wpf.pdb" />
+    <Resource Include="PCNotifier\MaterialDesignThemes.Wpf.xml" />
+    <Content Include="PCNotifier\PCNotifier.exe" />
+    <Content Include="PCNotifier\PCNotifier.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

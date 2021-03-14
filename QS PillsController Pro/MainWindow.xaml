@@ -1,10 +1,18 @@
-﻿<Window x:Class="QS_PillsController_Pro.MainWindow"
+﻿<av:Window x:Class="QS_PillsController_Pro.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QS_PillsController_Pro"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:QS_PillsController_Pro"
         mc:Ignorable="d"
         Title="QS PillsController PRO" Height="450" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" Icon="Resources/pills.png" >
     <Grid>
@@ -26,7 +34,7 @@
         <Label Grid.Column="0" Grid.Row="1" x:Name="NameTBox" Content="Type your medicine name:" HorizontalAlignment="Right" Cursor="Arrow" FontSize="20" MouseDown="NameTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
         <TextBox Text="{Binding PillName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="1" Grid.Column="1" x:Name="NameBox" HorizontalAlignment="Left" Height="33" VerticalAlignment="Stretch" FontSize="20" Width="400" Grid.ColumnSpan="2"/>
         <Label Grid.Column="0" Grid.Row="2" x:Name="FrequencyTBox" Content="Type frequency of consumption per day:" HorizontalAlignment="Right" VerticalAlignment= "Stretch" Width="376" Cursor="Arrow" FontSize="20" MouseDown="FrequencyTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
-        <ComboBox Text="{Binding Frequency, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="2" Grid.Column="1"  x:Name="FrequencyBox" Height="37" FontSize="20">
+        <ComboBox Text="{Binding Frequency}" Grid.Row="2" Grid.Column="1"  x:Name="FrequencyBox" Height="37" FontSize="20">
             <ComboBoxItem
                     IsSelected="True" Content="1"/>
             <ComboBoxItem Content="2"/>
@@ -35,24 +43,14 @@
         <DatePicker Text="{Binding StartDateTime}" Grid.Column="1" Grid.Row="3" FontSize="20"
                     x:Name="StartDatePicker"
                     materialDesign:HintAssist.Hint="Future Date"
-                    materialDesign:CalendarAssist.IsHeaderVisible="False" 
+                    materialDesign:CalendarAssist.IsHeaderVisible="True" 
                     Height="37" >
-            <Binding.ValidationRules>
-                <domain:FutureDateValidationRule
-                    ValidatesOnTargetUpdated="True" xmlns:domain="clr-namespace:MaterialDesignDemo.Domain" />
-            </Binding.ValidationRules>
         </DatePicker>
         <Label Grid.Column="0" Grid.Row="3" x:Name="StartDatePickerTBox" Content="Choose start date of consumption:" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="37" FontFamily="Segoe UI Semibold" />
-        <DatePicker Text="{Binding EndDateTime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="4" Grid.Column="1"
+        <DatePicker Text="{Binding EndDateTime}" Grid.Row="4" Grid.Column="1"
                     x:Name="EndDatePicker"
                     materialDesign:HintAssist.Hint="Future Date"
-                    materialDesign:CalendarAssist.IsHeaderVisible="False" Height="37" FontSize="20">
-            <DatePicker.SelectedDate>
-                <Binding
-                    Path="FutureValidatingDate"
-                    UpdateSourceTrigger="PropertyChanged">
-                </Binding>
-            </DatePicker.SelectedDate>
+                    materialDesign:CalendarAssist.IsHeaderVisible="True" Height="37" FontSize="20">
         </DatePicker>
         <Label Grid.Row="4" Grid.Column="0" x:Name="EndDatePickerTBox" Content="Choose end date of consumption:" Width="313" Cursor="Arrow" FontSize="20" Height="37" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" />
         <Button Grid.ColumnSpan="2" Grid.Row="5"
@@ -77,4 +75,4 @@
         <Image x:Name="HistoryButton" Grid.Column="2" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top" Width="50" Source="/Resources/calendar.png" MouseDown="HistoryButton_OnMouseDown" Margin="0,24,23.6,0"/>
         <Label Grid.Column ="2" FontFamily="Segoe UI Semibold" Content="HISTORY" Margin="120.8,74,1.6,23" HorizontalAlignment="Center" VerticalAlignment="Center" Width="76" FontWeight="Bold"  />
     </Grid>
-</Window>
+</av:Window>

@@ -59,7 +59,7 @@ namespace QS_PillsController_Pro
                     td.Triggers.Add(new TimeTrigger(myDate));
 
                     // Create an action that will launch Notepad whenever the trigger fires
-                    td.Actions.Add(new ExecAction("PCNotifier.exe", PillName = _pillName, null));
+                    td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", PillName = _pillName, null));
 
                     // Register the task in the root folder
                     ts.RootFolder.RegisterTaskDefinition($@"{_pillName}", td);

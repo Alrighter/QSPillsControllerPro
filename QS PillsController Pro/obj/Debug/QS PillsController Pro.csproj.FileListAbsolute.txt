@@ -84,3 +84,4 @@ D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsControll
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.csproj.CopyComplete
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.exe
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.pdb
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro_Content.g.cs
