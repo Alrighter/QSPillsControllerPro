@@ -10,6 +10,7 @@ namespace QS_PillsController_Pro
 {
     class TaskCreator
     {
+
         #region fields
         private string _pillName;
         private int _frequency;
@@ -23,7 +24,6 @@ namespace QS_PillsController_Pro
         private int _time3hr;
         private int _time3min;
         #endregion
-
 
         public TaskCreator(string PillName, int frequency, DateTime StartDate, DateTime EndDate, string Time1)
         {
