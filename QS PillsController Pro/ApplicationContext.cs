@@ -13,6 +13,6 @@ namespace QS_PillsController_Pro
         {
 
         }
-        public DbSet<Pills> Pills { get; set; }
+        public DbSet<Pills> Information { get; set; }
     }
 }

@@ -12,32 +12,38 @@ namespace QS_PillsController_Pro
     {
 
         #region fields
-        private string _pillName;
-        private int _frequency;
-        DateTime _startDate;
-        DateTime _endDate;
-        private int _time1hr;
-        private int _time1min;
-        private int _time2hr;
-        private int _time2min;
-        private int _time3hr;
-        private int _time3min;
+
+        static int _iD;
+        static private string _pillName;
+        static private int _frequency;
+        static DateTime _startDate;
+        static DateTime _endDate;
+        static private int _time1hr;
+        static private int _time1min;
+        static private int _time2hr;
+        static private int _time2min;
+        static private int _time3hr;
+        static private int _time3min;
         #endregion
 
-        public TaskCreator(string PillName, int frequency, DateTime StartDate, DateTime EndDate, string Time1)
+        
+        static void CreateTask(Pills pills)
         {
+
             #region fields
 
-            _pillName = PillName;
-            _frequency = frequency;
-            _startDate = StartDate;
-            _endDate = EndDate;
-            char h1 = Time1[0];
-            char h2 = Time1[1];
+            _iD = pills.ID;
+            _pillName = pills.PillName;
+            _frequency = pills.Frequency;
+            _startDate = pills.StartDateTime;
+            _endDate = pills.EndDateTime;
+            char h1 = pills.TimePicker1[0];
+            char h2 = pills.TimePicker1[1];
             _time1hr = Convert.ToInt32(h1) + Convert.ToInt32(h2);
-            char m1 = Time1[3];
-            char m2 = Time1[4];
+            char m1 = pills.TimePicker1[3];
+            char m2 = pills.TimePicker1[4];
             _time1min = Convert.ToInt32(m1) + Convert.ToInt32(m2);
+
             #endregion
 
             #region TaskCreatorScript
@@ -58,16 +64,13 @@ namespace QS_PillsController_Pro
                     td.Triggers.Add(new TimeTrigger(myDate));
 
                     // Create an action that will launch Notepad whenever the trigger fires
-                    td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", PillName = _pillName, null));
+                    td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
 
                     // Register the task in the root folder
-                    ts.RootFolder.RegisterTaskDefinition($@"{_pillName}", td);
+                    ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
 
-                    // Remove the task we just created
-                    ts.RootFolder.DeleteTask("Test");
                 }
 
-                
             }
 
             #endregion
@@ -262,6 +265,15 @@ namespace QS_PillsController_Pro
                 00,
                 00,
                 dateTime.Kind);
+        }
+
+        public static void TaskRemover(string PillName, int ID)
+        {
+            using (TaskService ts = new TaskService())
+            {
+                // Remove the task we just created
+                ts.RootFolder.DeleteTask($"{PillName} + {ID.ToString()}");
+            }
         }
     }
 }

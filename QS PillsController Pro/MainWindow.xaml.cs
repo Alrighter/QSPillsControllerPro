@@ -33,8 +33,7 @@ namespace QS_PillsController_Pro
         }
 
         public MainWindow()
-        { 
-            
+        {
             InitializeComponent();
             Settings.init();
             DataContext = this;
@@ -134,9 +133,10 @@ namespace QS_PillsController_Pro
 
             if (_pillName != null & _time1 != null)
             {
-                SQLiteConnection sqLite_connection = CreateConnection();
-                CreateTable(sqLite_connection);
-                InsertData(sqLite_connection, PillName, Convert.ToString(StartDateTime), Convert.ToString(EndDateTime), Frequency);
+                SQLiteConnection sqLite_connection = db.CreateConnection();
+                db.CreateTable(sqLite_connection);
+                Settings.DataContext.Information.Add(new Pills(PillName, Frequency, StartDateTime, EndDateTime, Time1, Time2, Time3));
+                Settings.DataContext.SaveChanges();
             }
             else
             {
@@ -144,42 +144,6 @@ namespace QS_PillsController_Pro
             }
 
         }
-
-        #region SQLite
-
-        public SQLiteConnection CreateConnection()
-        {
-            SQLiteConnection sqlconn = new SQLiteConnection("Data Source=database.db; Version = 3; New = True; Compress = True; ");
-            try
-            {
-                sqlconn.Open();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show("Error: " + Ex.Message);
-            }
-            return sqlconn;
-        }
-
-        public void CreateTable(SQLiteConnection conn)
-        {
-
-            SQLiteCommand sqlcmd;
-            string createTableCmd = "CREATE TABLE IF NOT EXISTS Information(ID INTEGER NOT NULL UNIQUE, NAME TEXT NOT NULL,START_DATE TEXT NOT NULL, END_DATE TEXT NOT NULL,FREQUENCY INTEGER NOT NULL, PRIMARY KEY(ID AUTOINCREMENT)); ";
-            sqlcmd = conn.CreateCommand();
-
-            sqlcmd.CommandText = createTableCmd;
-            sqlcmd.ExecuteNonQuery();
-
-        }
-
-        public void InsertData(SQLiteConnection conn, string name, string startDate, string endDate, int frequency)
-        {
-            SQLiteCommand sqlcmd = new SQLiteCommand($"INSERT INTO Information (NAME, START_DATE, END_DATE, FREQUENCY) VALUES('{name}', '{startDate}', '{endDate}', {frequency});", conn);
-            sqlcmd.ExecuteNonQuery();
-        }
-
-        #endregion
 
         #region HelpButtons
 
