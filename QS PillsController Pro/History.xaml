@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="History" Height="450" Width="800" ResizeMode="NoResize" Icon="Resources/calendar.png" Topmost="True">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="ID: " />
+        <TextBlock Text="Pill name: " Grid.Row="1" />
+        <TextBlock  Text="Start date: " Grid.Row="2"/>
+        <TextBlock  Text="End date: " Grid.Row="3"/>
+        <TextBlock  Text="Frequency: " Grid.Row="4"/>
+        <TextBlock Text="{Binding ID}" Grid.Column="1" />
+        <TextBlock Text="{Binding PillName}" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock Text="{Binding StartDateTime}" Grid.Column="1" Grid.Row="2"/>
+        <TextBlock Text="{Binding EndDateTime}" Grid.Column="1" Grid.Row="3"/>
+        <TextBlock Text="{Binding Frequency}" Grid.Column="1" Grid.Row="4"/>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Data.SQLite;
 using System.Globalization;
 using System.Windows;
@@ -7,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using ValidationResult = System.Windows.Controls.ValidationResult;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
@@ -19,41 +22,22 @@ using MaterialDesignThemes.Wpf;
 
 namespace QS_PillsController_Pro
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-
-            if (_frequency ==  1)
-            {
-                PresetTimePicker1.IsEnabled = true;
-                PresetTimePicker2.IsEnabled = false;
-                PresetTimePicker3.IsEnabled = false;
-            }
-            else if (_frequency == 2)
-            {
-                PresetTimePicker1.IsEnabled = true;
-                PresetTimePicker2.IsEnabled = true;
-                PresetTimePicker3.IsEnabled = false;
-            }
-            else if (_frequency == 3)
-            {
-                PresetTimePicker1.IsEnabled = true;
-                PresetTimePicker2.IsEnabled = true;
-                PresetTimePicker3.IsEnabled = true;
-            }
-            
-            base.OnPropertyChanged(e);
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
 
         public MainWindow()
         { 
+            
             InitializeComponent();
+            Settings.init();
+            DataContext = this;
         }
 
         #region Fields
@@ -68,8 +52,28 @@ namespace QS_PillsController_Pro
 
         #endregion
 
+        private bool FrCheck(int a) => Frequency >= a;
 
         #region Properties
+
+        public dynamic isEnabled1
+        {
+            get => _isEnabled1;
+            set { _isEnabled1 = value; OnPropertyChanged("isEnabled1");}
+    }
+
+        public dynamic isEnabled2
+        {
+            get => _isEnabled2;
+            set { _isEnabled2 = value; OnPropertyChanged("isEnabled2"); }
+        }
+
+        public dynamic isEnabled3
+        {
+            get => _isEnabled3;
+            set { _isEnabled3 = value; OnPropertyChanged("isEnabled3"); }
+        }
+        private dynamic _isEnabled1, _isEnabled2, _isEnabled3;
 
         public string PillName
         {
@@ -80,18 +84,24 @@ namespace QS_PillsController_Pro
         public int Frequency
         {
             get { return _frequency; }
-            set { _frequency = value; }
+            set { _frequency = value; OnPropertyChanged("Frequency");
+                isEnabled1 = FrCheck(1);
+                isEnabled2 = FrCheck(2);
+                isEnabled3 = FrCheck(3);
+            }
+            
         }
 
         public DateTime StartDateTime
         {
-            get { return _startDateTime; }
-            set { _startDateTime = value; }
+            get => DateTime.Now;
+            set { _startDateTime = value;
+                MessageBox.Show(_startDateTime.ToString()); OnPropertyChanged("StartDateTime");}
         }
 
         public DateTime EndDateTime
         {
-            get { return _endDateTime; }
+            get => StartDateTime;
             set { _endDateTime = value; }
         }
 
@@ -113,17 +123,20 @@ namespace QS_PillsController_Pro
             set { _time3 = value; }
         }
 
+        
+
         #endregion
+
+        
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
 
-            if (_pillName != null & _frequency != null & _startDateTime != null & _endDateTime != null & _time1 != null)
+            if (_pillName != null & _time1 != null)
             {
                 SQLiteConnection sqLite_connection = CreateConnection();
                 CreateTable(sqLite_connection);
                 InsertData(sqLite_connection, PillName, Convert.ToString(StartDateTime), Convert.ToString(EndDateTime), Frequency);
-                MessageBox.Show(_time1);
             }
             else
             {
@@ -143,7 +156,7 @@ namespace QS_PillsController_Pro
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("Error: " + Convert.ToString(Ex));
+                MessageBox.Show("Error: " + Ex.Message);
             }
             return sqlconn;
         }
@@ -191,7 +204,10 @@ namespace QS_PillsController_Pro
         #endregion
 
 
-
+        private void EndDatePicker_OnSourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            EndDateTime = StartDateTime;
+        }
     }
 
     public class NotEmptyValidationRule : ValidationRule

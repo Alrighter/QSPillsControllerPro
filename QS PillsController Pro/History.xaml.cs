@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,17 @@ namespace QS_PillsController_Pro
     /// </summary>
     public partial class History : Window
     {
+        private dynamic db;
         public History()
         {
             InitializeComponent();
+            db = Settings.db;
+            DataContext = db.Pills.Local.ToBindingList();
         }
+
+        
+
+
 
         #region SQLite
 

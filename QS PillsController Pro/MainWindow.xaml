@@ -14,6 +14,7 @@
         xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:QS_PillsController_Pro"
         mc:Ignorable="d"
+        
         Title="QS PillsController PRO" Height="450" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" Icon="Resources/pills.png" >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -33,21 +34,21 @@
         <Image Grid.Row="0"  Grid.ColumnSpan="3" x:Name="PillImage" HorizontalAlignment="Center" Height="100" VerticalAlignment="Center" Width="100" Source="/Resources/pills.png"/>
         <Label Grid.Column="0" Grid.Row="1" x:Name="NameTBox" Content="Type your medicine name:" HorizontalAlignment="Right" Cursor="Arrow" FontSize="20" MouseDown="NameTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
         <TextBox Text="{Binding PillName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="1" Grid.Column="1" x:Name="NameBox" HorizontalAlignment="Left" Height="33" VerticalAlignment="Stretch" FontSize="20" Width="400" Grid.ColumnSpan="2"/>
-        <Label Grid.Column="0" Grid.Row="2" x:Name="FrequencyTBox" Content="Type frequency of consumption per day:" HorizontalAlignment="Right" VerticalAlignment= "Stretch" Width="376" Cursor="Arrow" FontSize="20" MouseDown="FrequencyTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
-        <ComboBox Text="{Binding Frequency}" Grid.Row="2" Grid.Column="1"  x:Name="FrequencyBox" Height="37" FontSize="20">
+        <Label Grid.Column="0" Grid.Row="2" x:Name="FrequencyTBox" Content="Choose frequency of consumption per day:" HorizontalAlignment="Right" VerticalAlignment= "Stretch" Width="397" Cursor="Arrow" FontSize="20" MouseDown="FrequencyTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold" av:Grid.ColumnSpan="2" Margin="0,12,198.2,11"/>
+        <ComboBox Text="{Binding Frequency, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="2" Grid.Column="1"  x:Name="FrequencyBox" Height="37" FontSize="20">
             <ComboBoxItem
                     IsSelected="True" Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
         </ComboBox>
-        <DatePicker Text="{Binding StartDateTime}" Grid.Column="1" Grid.Row="3" FontSize="20"
+        <DatePicker Text="{Binding StartDateTime, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" FontSize="20"
                     x:Name="StartDatePicker"
                     materialDesign:HintAssist.Hint="Future Date"
                     materialDesign:CalendarAssist.IsHeaderVisible="True" 
                     Height="37" >
         </DatePicker>
         <Label Grid.Column="0" Grid.Row="3" x:Name="StartDatePickerTBox" Content="Choose start date of consumption:" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="37" FontFamily="Segoe UI Semibold" />
-        <DatePicker Text="{Binding EndDateTime}" Grid.Row="4" Grid.Column="1"
+        <DatePicker SourceUpdated="EndDatePicker_OnSourceUpdated" Text="{Binding EndDateTime, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="4" Grid.Column="1"
                     x:Name="EndDatePicker"
                     materialDesign:HintAssist.Hint="Future Date"
                     materialDesign:CalendarAssist.IsHeaderVisible="True" Height="37" FontSize="20">
@@ -60,15 +61,16 @@
                 Margin="299,14,100.2,14">
             Okay
         </Button>
-        <materialDesign:TimePicker Text="{Binding Time1, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
+        <materialDesign:TimePicker IsEnabled ="{Binding isEnabled1, UpdateSourceTrigger=PropertyChanged}"  Text="{Binding Time1, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
                                    Is24Hours="True" 
                                    x:Name="PresetTimePicker1" 
                                    Width="117" />
-        <materialDesign:TimePicker Text="{Binding Time2, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
+        <materialDesign:TimePicker IsEnabled ="{Binding isEnabled2, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Time2, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
+                                   
                                    Is24Hours="True" 
                                    x:Name="PresetTimePicker2" 
                                    Width="117" />
-        <materialDesign:TimePicker Text="{Binding Time3, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
+        <materialDesign:TimePicker IsEnabled ="{Binding isEnabled3, UpdateSourceTrigger=PropertyChanged}" Text="{Binding Time3, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Stretch" Height="37"
                                    Is24Hours="True"  
                                    x:Name="PresetTimePicker3"  Width="117" 
         />

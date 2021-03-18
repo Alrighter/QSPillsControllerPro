@@ -69,14 +69,12 @@ D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Debug\zh-CN\Microsoft.
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.csprojAssemblyReference.cache
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\History.g.cs
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\MainWindow.g.cs
-D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\Settings.g.cs
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\App.g.cs
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro_MarkupCompile.cache
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro_MarkupCompile.lref
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\App.baml
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\History.baml
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\MainWindow.baml
-D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\Settings.baml
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.g.resources
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS_PillsController_Pro.Properties.Resources.resources
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Debug\QS PillsController Pro.csproj.GenerateResource.cache

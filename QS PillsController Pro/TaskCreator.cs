@@ -16,7 +16,6 @@ namespace QS_PillsController_Pro
         private int _frequency;
         DateTime _startDate;
         DateTime _endDate;
-        private int _duration;
         private int _time1hr;
         private int _time1min;
         private int _time2hr;
