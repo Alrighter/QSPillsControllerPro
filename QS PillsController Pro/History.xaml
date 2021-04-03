@@ -7,18 +7,27 @@
         mc:Ignorable="d"
         Title="History" Height="450" Width="800" ResizeMode="NoResize" Icon="Resources/calendar.png" Topmost="True">
 
+    <Grid>
         <ListBox x:Name="itemsList" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding ID}" FontSize="15" />
+                        <TextBlock Text="Name: " />
                         <TextBlock Text="{Binding PillName}" FontSize="15" />
+                        <TextBlock Text="Start date: " />
                         <TextBlock Text="{Binding StartDateTime}" FontSize="15"/>
+                        <TextBlock Text="End date: " />
                         <TextBlock Text="{Binding EndDateTime}" FontSize="15"/>
+                        <TextBlock Text="Frequency: " />
                         <TextBlock Text="{Binding Frequency}" FontSize="15"/>
                     </StackPanel>
+
                 </DataTemplate>
+
             </ListBox.ItemTemplate>
         </ListBox>
-        
+        <Button Content="Delete" Click="Delete_Click" Margin="302,360,301.6,16" Height="Auto"  />
+    </Grid>
+
+
 </Window>

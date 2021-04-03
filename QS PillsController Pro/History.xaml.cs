@@ -20,6 +20,7 @@ namespace QS_PillsController_Pro
     /// <summary>
     /// Логика взаимодействия для History.xaml
     /// </summary>
+    
     public partial class History : Window
     {
         private BindingList<Pills> context;
@@ -32,9 +33,13 @@ namespace QS_PillsController_Pro
             DataContext = this.context;
         }
 
-        
-
-
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (itemsList.SelectedItem == null) return;
+            Pills item = itemsList.SelectedItem as Pills;
+            datactx.Information.Remove(item);
+            datactx.SaveChanges();
+        }
 
         #region SQLite
 

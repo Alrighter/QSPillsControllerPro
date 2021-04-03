@@ -30,7 +30,7 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
+        
         <Image Grid.Row="0"  Grid.ColumnSpan="3" x:Name="PillImage" HorizontalAlignment="Center" Height="100" VerticalAlignment="Center" Width="100" Source="/Resources/pills.png"/>
         <Label Grid.Column="0" Grid.Row="1" x:Name="NameTBox" Content="Type your medicine name:" HorizontalAlignment="Right" Cursor="Arrow" FontSize="20" MouseDown="NameTBox_OnMouseDown" Height="37" FontFamily="Segoe UI Semibold"/>
         <TextBox Text="{Binding PillName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Grid.Row="1" Grid.Column="1" x:Name="NameBox" HorizontalAlignment="Left" Height="33" VerticalAlignment="Stretch" FontSize="20" Width="400" Grid.ColumnSpan="2"/>
