@@ -54,7 +54,7 @@
                     materialDesign:CalendarAssist.IsHeaderVisible="True" Height="37" FontSize="20">
         </DatePicker>
         <Label Grid.Row="4" Grid.Column="0" x:Name="EndDatePickerTBox" Content="Choose end date of consumption:" Width="313" Cursor="Arrow" FontSize="20" Height="37" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" />
-        <Button Grid.ColumnSpan="2" Grid.Row="5"
+        <Button Grid.ColumnSpan="2" Grid.Row="5" IsEnabled="{Binding isEnabled1}"
                 Style="{StaticResource MaterialDesignFlatLightBgButton}"
                 ToolTip="MaterialDesignFlatLightButton"
                 Click="ButtonBase_OnClick"

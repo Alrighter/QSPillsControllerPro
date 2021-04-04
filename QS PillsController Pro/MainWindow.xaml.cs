@@ -7,18 +7,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ValidationResult = System.Windows.Controls.ValidationResult;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MaterialDesignThemes.Wpf;
 
 namespace QS_PillsController_Pro
 {
@@ -126,17 +116,18 @@ namespace QS_PillsController_Pro
 
         #endregion
 
-        
-
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
 
             if (_pillName != null & _time1 != null)
             {
+                var Pill = new Pills(PillName, Frequency, StartDateTime, EndDateTime, Time1, Time2, Time3);
                 SQLiteConnection sqLite_connection = db.CreateConnection();
                 db.CreateTable(sqLite_connection);
-                Settings.DataContext.Information.Add(new Pills(PillName, Frequency, StartDateTime, EndDateTime, Time1, Time2, Time3));
+                Settings.DataContext.Information.Add(Pill);
                 Settings.DataContext.SaveChanges();
+                TaskCreator rc = new TaskCreator(Settings.DataContext.Information.Find(Pill.ID));
+                rc.TaskCreatorScript();
             }
             else
             {
