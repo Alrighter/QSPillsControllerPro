@@ -16,7 +16,7 @@ namespace QS_PillsController_Pro
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        public void OnPropertyChanged([CallerMemberName] string prop = "") 
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
@@ -33,8 +33,8 @@ namespace QS_PillsController_Pro
 
         private string _pillName;
         private int _frequency;
-        private DateTime _startDateTime;
-        private DateTime _endDateTime;
+        private string _startDateTime;
+        private string _endDateTime = DateTime.Now.ToString();
         private string _time1;
         private string _time2;
         private string _time3;
@@ -78,20 +78,19 @@ namespace QS_PillsController_Pro
                 isEnabled2 = FrCheck(2);
                 isEnabled3 = FrCheck(3);
             }
-            
         }
 
-        public DateTime StartDateTime
+        public string StartDateTime
         {
-            get => DateTime.Now;
-            set { _startDateTime = value;
-                MessageBox.Show(_startDateTime.ToString()); OnPropertyChanged("StartDateTime");}
+            get => _startDateTime;
+            set { _startDateTime = value; 
+                OnPropertyChanged("StartDateTime");}
         }
 
-        public DateTime EndDateTime
+        public string EndDateTime
         {
-            get => StartDateTime;
-            set { _endDateTime = value; }
+            get => _endDateTime;
+            set { _endDateTime = value; OnPropertyChanged("EndDateTime"); }
         }
 
         public string Time1
@@ -112,13 +111,15 @@ namespace QS_PillsController_Pro
             set { _time3 = value; }
         }
 
+
         
 
         #endregion
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(_startDateTime);
+            
             if (_pillName != null & _time1 != null)
             {
                 var Pill = new Pills(PillName, Frequency, StartDateTime, EndDateTime, Time1, Time2, Time3);
@@ -131,7 +132,7 @@ namespace QS_PillsController_Pro
             }
             else
             {
-                MessageBox.Show("Введите корректные данные. " + _time1);
+                MessageBox.Show("Введите корректные данные. ");
             }
 
         }

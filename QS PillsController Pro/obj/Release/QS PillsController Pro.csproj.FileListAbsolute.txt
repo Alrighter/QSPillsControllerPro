@@ -1,0 +1,42 @@
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.exe.config
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.exe
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.pdb
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.SqlServer.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignColors.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\Microsoft.Win32.TaskScheduler.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.EF6.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.Linq.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.xml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.SqlServer.xml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignColors.pdb
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.pdb
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.xml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\Microsoft.Win32.TaskScheduler.xml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.xml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\de\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\es\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\fr\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\it\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\pl\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\ru\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\bin\Release\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\History.g.cs
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\MainWindow.g.cs
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\App.g.cs
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_Content.g.cs
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_MarkupCompile.cache
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_MarkupCompile.lref
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\App.baml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\History.baml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\MainWindow.baml
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.g.resources
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS_PillsController_Pro.Properties.Resources.resources
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.GenerateResource.cache
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.CoreCompileInputs.cache
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.CopyComplete
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.exe
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.pdb
+D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csprojAssemblyReference.cache

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32.TaskScheduler;
 
 namespace QS_PillsController_Pro
@@ -12,8 +14,8 @@ namespace QS_PillsController_Pro
         static int _iD;
         static private string _pillName;
         static private int _frequency;
-        static DateTime _startDate;
-        static DateTime _endDate;
+        static string _startDate;
+        static string _endDate;
         static private int _time1hr;
         static private int _time1min;
         static private int _time2hr;
@@ -22,60 +24,56 @@ namespace QS_PillsController_Pro
         static private int _time3min;
         #endregion
 
+        private static string startDateTime
+        {
+            get => _startDate;
+            set => _startDate = value; 
+        }
+
+        public static string EndDateTime
+        {
+            get => _endDate;
+            set => _endDate = value;
+        }
+        
         
         public TaskCreator(Pills pills)
         {
-
             _iD = pills.ID;
             _pillName = pills.PillName;
             _frequency = pills.Frequency;
             _startDate = pills.StartDateTime;
             _endDate = pills.EndDateTime;
-            char h1 = pills.TimePicker1[0];
-            char h2 = pills.TimePicker1[1];
-            _time1hr = Convert.ToInt32(h1) + Convert.ToInt32(h2);
-            char m1 = pills.TimePicker1[3];
-            char m2 = pills.TimePicker1[4];
-            _time1min = Convert.ToInt32(m1) + Convert.ToInt32(m2);
-            try
+            dynamic time1 = pills.TimePicker1.Split(':');
+            _time1hr = Convert.ToInt32(time1[0]);
+            _time1min = Convert.ToInt32(time1[1]);
+            if (pills.TimePicker2 != null)
             {
-                h1 = pills.TimePicker2[0];
-                h2 = pills.TimePicker2[1];
-                _time2hr = Convert.ToInt32(h1) + Convert.ToInt32(h2);
-                m1 = pills.TimePicker2[3];
-                m2 = pills.TimePicker2[4];
-                _time2min = Convert.ToInt32(m1) + Convert.ToInt32(m2);
+                dynamic time2 = pills.TimePicker2.Split(':');
+                _time2hr = Convert.ToInt32(time2[0]);
+                _time2min = Convert.ToInt32(time2[1]);
             }
-            catch (Exception)
+            if (pills.TimePicker3 != null)
             {
-                Console.WriteLine();
+                dynamic time3 = pills.TimePicker2.Split(':');
+                _time3hr = Convert.ToInt32(time3[0]);
+                _time3min = Convert.ToInt32(time3[1]);
             }
 
-            try
-            {
-                h1 = pills.TimePicker3[0];
-                h2 = pills.TimePicker3[1];
-                _time3hr = Convert.ToInt32(h1) + Convert.ToInt32(h2);
-                m1 = pills.TimePicker3[3];
-                m2 = pills.TimePicker3[4];
-                _time3min = Convert.ToInt32(m1) + Convert.ToInt32(m2);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine();
-            }
-            
         }
 
         public void TaskCreatorScript()
         {
-            for (DateTime a = _startDate; a.Day <= _endDate.Day; a.AddDays(1))
+            dynamic ed = _endDate.Split('.');
+            for (DateTime a = Convert.ToDateTime(_startDate); a.Day <= Int32.Parse(ed[0]); a.AddDays(1))
             {
 
-                DateTime myDate = ChangeTime(a, _time1hr, _time1min);
-
-                    using (TaskService ts = new TaskService())
+                DateTime myDate = ChangeTime(a.Year, a.Month, a.Day, _time1hr, _time1min);
+                using (TaskService ts = new TaskService())
                     {
+                        var path = Directory.GetCurrentDirectory();
+                        Console.WriteLine(path);
+
                         // Create a new task definition and assign properties
                         TaskDefinition td = ts.NewTask();
                         td.RegistrationInfo.Description = $"{_pillName} trigger";
@@ -88,87 +86,85 @@ namespace QS_PillsController_Pro
 
                         // Register the task in the root folder
                         ts.RootFolder.RegisterTaskDefinition($"{_pillName} + {_iD}", td);
+                    }
 
-                        MessageBox.Show("successsss");
-
-                }
-
-                if (_frequency == 2)
-                {
-                    try
+                    if (_frequency == 2)
                     {
-
-                        myDate = ChangeTime(a, _time2hr, _time2min);
-
-                        using (TaskService ts = new TaskService())
+                        try
                         {
 
-                            // Create a new task definition and assign properties
-                            TaskDefinition td = ts.NewTask();
-                            td.RegistrationInfo.Description = $"{_pillName} trigger";
-
-                            // Create a trigger that will fire the task at this time every other day
-                            td.Triggers.Add(new TimeTrigger(myDate));
-
-                            // Create an action that will launch Notepad whenever the trigger fires
-                            td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
-
-                            // Register the task in the root folder
-                            ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-
-                else if (_frequency == 3)
-                {
-                    try
-                    {
-
-                        myDate = ChangeTime(a, _time3hr, _time3min);
+                        myDate = ChangeTime(a.Year, a.Month, a.Day, _time2hr, _time2min);
 
                         using (TaskService ts = new TaskService())
+                            {
+
+                                // Create a new task definition and assign properties
+                                TaskDefinition td = ts.NewTask();
+                                td.RegistrationInfo.Description = $"{_pillName} trigger";
+
+                                // Create a trigger that will fire the task at this time every other day
+                                td.Triggers.Add(new TimeTrigger(myDate));
+
+                                // Create an action that will launch Notepad whenever the trigger fires
+                                td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
+
+                                // Register the task in the root folder
+                                ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
+
+                            }
+                        }
+                        catch (Exception)
                         {
-
-                            // Create a new task definition and assign properties
-                            TaskDefinition td = ts.NewTask();
-                            td.RegistrationInfo.Description = $"{_pillName} trigger";
-
-                            // Create a trigger that will fire the task at this time every other day
-                            td.Triggers.Add(new TimeTrigger(myDate));
-
-                            // Create an action that will launch Notepad whenever the trigger fires
-                            td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
-
-                            // Register the task in the root folder
-                            ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
-
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
 
+                    else if (_frequency == 3)
+                    {
+                        try
+                        {
+
+                         myDate = ChangeTime(a.Year, a.Month, a.Day, _time3hr, _time3min);
+
+                        using (TaskService ts = new TaskService())
+                            {
+
+                                // Create a new task definition and assign properties
+                                TaskDefinition td = ts.NewTask();
+                                td.RegistrationInfo.Description = $"{_pillName} trigger";
+
+                                // Create a trigger that will fire the task at this time every other day
+                                td.Triggers.Add(new TimeTrigger(myDate));
+
+                                // Create an action that will launch Notepad whenever the trigger fires
+                                td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
+
+                                // Register the task in the root folder
+                                ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
+
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+
+                    }
+
+                    
             }
+            
         }
 
-        public static DateTime ChangeTime(DateTime dateTime, int hours, int minutes)
+        public static DateTime ChangeTime(int year, int month, int day, int hours, int minutes)
         {
             return new DateTime(
-                dateTime.Year,
-                dateTime.Month,
-                dateTime.Day,
+                year,
+                month,
+                day,
                 hours,
                 minutes,
                 00,
                 00,
-                dateTime.Kind);
+                System.DateTimeKind.Utc);
         }
 
         public static void TaskRemover(string PillName, int ID)
@@ -181,9 +177,8 @@ namespace QS_PillsController_Pro
                     ts.RootFolder.DeleteTask($"{PillName} + {ID.ToString()}");
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                MessageBox.Show(e.ToString());
             }
             
         }

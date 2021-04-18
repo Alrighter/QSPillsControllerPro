@@ -14,8 +14,6 @@ namespace QS_PillsController_Pro
             db.CreateTable(sqLite_connection);
             DataContext.Information.Load();
         }
-        
-        
 
     }
 }

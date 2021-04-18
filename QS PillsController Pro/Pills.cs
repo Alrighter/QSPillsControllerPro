@@ -19,8 +19,8 @@ namespace QS_PillsController_Pro
         private int _iD;
         private string _pillName;
         private int _frequency;
-        private DateTime _startDateTime;
-        private DateTime _endDateTime;
+        private string _startDateTime;
+        private string _endDateTime;
         private string _timePicker1;
         private string _timePicker2;
         private string _timePicker3;
@@ -47,13 +47,13 @@ namespace QS_PillsController_Pro
             set { _frequency = value; OnPropertyChanged("Frequency"); }
         }
 
-        public DateTime StartDateTime
+        public string StartDateTime
         {
             get { return _startDateTime; }
             set { _startDateTime = value; OnPropertyChanged("StartDateTime"); }
         }
 
-        public DateTime EndDateTime
+        public string EndDateTime
         {
             get { return _endDateTime; }
             set { _endDateTime = value; OnPropertyChanged("EndDateTime"); }
@@ -83,7 +83,7 @@ namespace QS_PillsController_Pro
 
         }
 
-        public Pills(string PillName, int Frequency, DateTime startDateTime, DateTime endDateTime, string Time1, string Time2, string Time3)
+        public Pills(string PillName, int Frequency, string startDateTime, string endDateTime, string Time1, string Time2, string Time3)
         {
             this.PillName = PillName;
             this.Frequency = Frequency;

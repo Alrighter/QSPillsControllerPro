@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QS_PillsController_Pro"
         mc:Ignorable="d"
-        Title="History" Height="450" Width="800" ResizeMode="NoResize" Icon="Resources/calendar.png" Topmost="True">
+        Title="History" Height="450" Width="800" ResizeMode="NoResize" Icon="Resources/calendar.png">
 
     <Grid>
         <ListBox x:Name="itemsList" ItemsSource="{Binding}">

@@ -41,16 +41,16 @@
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
         </ComboBox>
-        <DatePicker Text="{Binding StartDateTime, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" FontSize="20"
+        <DatePicker Text="{Binding StartDateTime, UpdateSourceTrigger=PropertyChanged, Mode= TwoWay}" SelectedDateFormat="Short" Grid.Column="1" Grid.Row="3" FontSize="20"
                     x:Name="StartDatePicker"
-                    materialDesign:HintAssist.Hint="Future Date"
+                    materialDesign:HintAssist.Hint="Start Date"
                     materialDesign:CalendarAssist.IsHeaderVisible="True" 
                     Height="37" >
         </DatePicker>
         <Label Grid.Column="0" Grid.Row="3" x:Name="StartDatePickerTBox" Content="Choose start date of consumption:" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Stretch" Height="37" FontFamily="Segoe UI Semibold" />
-        <DatePicker SourceUpdated="EndDatePicker_OnSourceUpdated" Text="{Binding EndDateTime, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="4" Grid.Column="1"
+        <DatePicker SourceUpdated="EndDatePicker_OnSourceUpdated" Text="{Binding EndDateTime, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedDateFormat="Short" Grid.Row="4" Grid.Column="1"
                     x:Name="EndDatePicker"
-                    materialDesign:HintAssist.Hint="Future Date"
+                    materialDesign:HintAssist.Hint="End Date"
                     materialDesign:CalendarAssist.IsHeaderVisible="True" Height="37" FontSize="20">
         </DatePicker>
         <Label Grid.Row="4" Grid.Column="0" x:Name="EndDatePickerTBox" Content="Choose end date of consumption:" Width="313" Cursor="Arrow" FontSize="20" Height="37" HorizontalAlignment="Right" VerticalAlignment="Stretch" FontFamily="Segoe UI Semibold" />
