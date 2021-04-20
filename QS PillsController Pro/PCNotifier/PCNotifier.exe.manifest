@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PCNotifier.exe" size="25568">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PCNotifier.exe" size="25056">
       <assemblyIdentity name="PCNotifier" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6AvLninUCltGeYRjHtMbp01qqXS5SfXzR8ulZ4aGQIQ=</dsig:DigestValue>
+        <dsig:DigestValue>/Ns5xFsQ1L5LucUElkfM8NMoMwa0+dGl8HANn4Ioe8w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

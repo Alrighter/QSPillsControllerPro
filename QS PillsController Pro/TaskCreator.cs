@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32.TaskScheduler;
@@ -64,94 +65,65 @@ namespace QS_PillsController_Pro
 
         public void TaskCreatorScript()
         {
-            dynamic ed = _endDate.Split('.');
-            for (DateTime a = Convert.ToDateTime(_startDate); a.Day <= Int32.Parse(ed[0]); a.AddDays(1))
+            try
             {
 
-                DateTime myDate = ChangeTime(a.Year, a.Month, a.Day, _time1hr, _time1min);
-                using (TaskService ts = new TaskService())
+                dynamic ed = _endDate.Split('.');
+                var a = Convert.ToDateTime(_startDate);
+                for (var i = 0; a.Day <= Int32.Parse(ed[0]); i++)
+                {
+                    DateTime myDate = ChangeTime(a.Year, a.Month, a.Day, _time1hr, _time1min);
+                    using (TaskService ts = new TaskService())
                     {
                         var path = Directory.GetCurrentDirectory();
-                        Console.WriteLine(path);
-
-                        // Create a new task definition and assign properties
+                        a = new DateTime(a.Year, a.Month, a.Day + 1);
                         TaskDefinition td = ts.NewTask();
                         td.RegistrationInfo.Description = $"{_pillName} trigger";
-
-                        // Create a trigger that will fire the task at this time every other day
+                        td.Actions.Add(new ExecAction(Settings.NotPath, _pillName, null));
                         td.Triggers.Add(new TimeTrigger(myDate));
-
-                        // Create an action that will launch Notepad whenever the trigger fires
-                        td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
-
-                        // Register the task in the root folder
-                        ts.RootFolder.RegisterTaskDefinition($"{_pillName} + {_iD}", td);
+                        ts.RootFolder.RegisterTaskDefinition($"{_pillName}{_iD}", td);
                     }
-
                     if (_frequency == 2)
                     {
                         try
                         {
-
-                        myDate = ChangeTime(a.Year, a.Month, a.Day, _time2hr, _time2min);
-
-                        using (TaskService ts = new TaskService())
+                            myDate = ChangeTime(a.Year, a.Month, a.Day, _time2hr, _time2min);
+                            using (TaskService ts = new TaskService())
                             {
-
-                                // Create a new task definition and assign properties
                                 TaskDefinition td = ts.NewTask();
                                 td.RegistrationInfo.Description = $"{_pillName} trigger";
-
-                                // Create a trigger that will fire the task at this time every other day
                                 td.Triggers.Add(new TimeTrigger(myDate));
-
-                                // Create an action that will launch Notepad whenever the trigger fires
-                                td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
-
-                                // Register the task in the root folder
+                                td.Actions.Add(new ExecAction(Settings.NotPath, _pillName, null));
                                 ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
-
                             }
                         }
                         catch (Exception)
                         {
                         }
                     }
-
-                    else if (_frequency == 3)
+                    if (_frequency == 3)
                     {
                         try
                         {
-
-                         myDate = ChangeTime(a.Year, a.Month, a.Day, _time3hr, _time3min);
-
-                        using (TaskService ts = new TaskService())
+                            myDate = ChangeTime(a.Year, a.Month, a.Day, _time3hr, _time3min);
+                            using (TaskService ts = new TaskService())
                             {
-
-                                // Create a new task definition and assign properties
                                 TaskDefinition td = ts.NewTask();
                                 td.RegistrationInfo.Description = $"{_pillName} trigger";
-
-                                // Create a trigger that will fire the task at this time every other day
                                 td.Triggers.Add(new TimeTrigger(myDate));
-
-                                // Create an action that will launch Notepad whenever the trigger fires
-                                td.Actions.Add(new ExecAction("./PCNotifier/PCNotifier.exe", _pillName, null));
-
-                                // Register the task in the root folder
-                                ts.RootFolder.RegisterTaskDefinition($@"{_pillName} + {_iD}", td);
+                                td.Actions.Add(new ExecAction(Settings.NotPath, _pillName, null));
+                                ts.RootFolder.RegisterTaskDefinition($@"{_pillName}{_iD}", td);
 
                             }
                         }
-                        catch (Exception)
+                        catch (Exception er)
                         {
+                            throw er;
                         }
-
                     }
-
-                    
-            }
-            
+                    }
+                }
+            catch (Exception er) { throw er; }
         }
 
         public static DateTime ChangeTime(int year, int month, int day, int hours, int minutes)
@@ -163,19 +135,14 @@ namespace QS_PillsController_Pro
                 hours,
                 minutes,
                 00,
-                00,
-                System.DateTimeKind.Utc);
+                00);
         }
 
         public static void TaskRemover(string PillName, int ID)
         {
             try
             {
-                using (TaskService ts = new TaskService())
-                {
-                    // Remove the task we just created
-                    ts.RootFolder.DeleteTask($"{PillName} + {ID.ToString()}");
-                }
+                using (TaskService ts = new TaskService()) ts.RootFolder.DeleteTask($"{PillName}{ID.ToString()}");
             }
             catch (Exception)
             {
