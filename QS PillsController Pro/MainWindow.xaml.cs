@@ -9,6 +9,7 @@ using System.Windows.Input;
 using ValidationResult = System.Windows.Controls.ValidationResult;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
+using System.IO;
 
 namespace QS_PillsController_Pro
 {

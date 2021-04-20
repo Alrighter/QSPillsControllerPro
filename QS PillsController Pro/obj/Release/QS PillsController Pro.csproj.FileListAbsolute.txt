@@ -40,3 +40,45 @@ D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsContro
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.exe
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.pdb
 D:\GitHub\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csprojAssemblyReference.cache
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.exe.config
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.exe
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\QS PillsController Pro.pdb
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignColors.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\Microsoft.Win32.TaskScheduler.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.EF6.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.xml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignColors.pdb
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.pdb
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\MaterialDesignThemes.Wpf.xml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\Microsoft.Win32.TaskScheduler.xml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\System.Data.SQLite.xml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\de\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\es\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\fr\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\it\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\pl\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\ru\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\bin\Release\zh-CN\Microsoft.Win32.TaskScheduler.resources.dll
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csprojAssemblyReference.cache
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\History.g.cs
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\MainWindow.g.cs
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\App.g.cs
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_Content.g.cs
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_MarkupCompile.cache
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro_MarkupCompile.lref
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\App.baml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\History.baml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\MainWindow.baml
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.g.resources
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS_PillsController_Pro.Properties.Resources.resources
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.GenerateResource.cache
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.CoreCompileInputs.cache
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.csproj.CopyComplete
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.exe
+C:\Users\volos\QSPillsControllerPro\QS PillsController Pro\obj\Release\QS PillsController Pro.pdb
