@@ -1,15 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Data.Entity;
 using System.Data.SQLite;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using ValidationResult = System.Windows.Controls.ValidationResult;
-using System.Runtime.CompilerServices;
-using System.Windows.Data;
-using System.IO;
 
 namespace QS_PillsController_Pro
 {
@@ -17,7 +15,7 @@ namespace QS_PillsController_Pro
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "") 
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
@@ -49,8 +47,8 @@ namespace QS_PillsController_Pro
         public dynamic isEnabled1
         {
             get => _isEnabled1;
-            set { _isEnabled1 = value; OnPropertyChanged("isEnabled1");}
-    }
+            set { _isEnabled1 = value; OnPropertyChanged("isEnabled1"); }
+        }
 
         public dynamic isEnabled2
         {
@@ -67,14 +65,16 @@ namespace QS_PillsController_Pro
 
         public string PillName
         {
-            get { return _pillName;}
+            get { return _pillName; }
             set { _pillName = value; }
         }
 
         public int Frequency
         {
             get { return _frequency; }
-            set { _frequency = value; OnPropertyChanged("Frequency");
+            set
+            {
+                _frequency = value; OnPropertyChanged("Frequency");
                 isEnabled1 = FrCheck(1);
                 isEnabled2 = FrCheck(2);
                 isEnabled3 = FrCheck(3);
@@ -84,8 +84,11 @@ namespace QS_PillsController_Pro
         public string StartDateTime
         {
             get => _startDateTime;
-            set { _startDateTime = value; 
-                OnPropertyChanged("StartDateTime");}
+            set
+            {
+                _startDateTime = value;
+                OnPropertyChanged("StartDateTime");
+            }
         }
 
         public string EndDateTime
@@ -113,14 +116,12 @@ namespace QS_PillsController_Pro
         }
 
 
-        
+
 
         #endregion
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_startDateTime);
-            
             if (_pillName != null & _time1 != null)
             {
                 var Pill = new Pills(PillName, Frequency, StartDateTime, EndDateTime, Time1, Time2, Time3);
@@ -130,6 +131,7 @@ namespace QS_PillsController_Pro
                 Settings.DataContext.SaveChanges();
                 TaskCreator rc = new TaskCreator(Settings.DataContext.Information.Find(Pill.ID));
                 rc.TaskCreatorScript();
+                MessageBox.Show("Done!");
             }
             else
             {

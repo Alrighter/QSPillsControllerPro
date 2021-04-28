@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32.TaskScheduler;
+using System;
 using System.IO;
-using System.Reflection;
-using System.Windows;
-using MaterialDesignThemes.Wpf;
-using Microsoft.Win32.TaskScheduler;
 
 namespace QS_PillsController_Pro
 {
@@ -28,7 +25,7 @@ namespace QS_PillsController_Pro
         private static string startDateTime
         {
             get => _startDate;
-            set => _startDate = value; 
+            set => _startDate = value;
         }
 
         public static string EndDateTime
@@ -36,8 +33,8 @@ namespace QS_PillsController_Pro
             get => _endDate;
             set => _endDate = value;
         }
-        
-        
+
+
         public TaskCreator(Pills pills)
         {
             _iD = pills.ID;
@@ -121,8 +118,8 @@ namespace QS_PillsController_Pro
                             throw er;
                         }
                     }
-                    }
                 }
+            }
             catch (Exception er) { throw er; }
         }
 
@@ -147,7 +144,7 @@ namespace QS_PillsController_Pro
             catch (Exception)
             {
             }
-            
+
         }
     }
 }
